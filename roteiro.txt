@@ -1,0 +1,30 @@
+# Criar o Environment
+
+python -m venv "nome do ambiente virtual"
+
+nome-do-env\Scripts\activate
+
+# Instalar o Django e depend.
+
+pip install django
+
+# Criar um novo projeto
+
+django-admin startproject book_manager
+cd book_manager
+
+# Criar o Aplicativo do projeto
+
+python manage.py startapp books
+
+# Registrar o APP / settings.py
+
+INSTALLED_APPS = [
+    # ...
+    'books',
+]
+
+
+
+
+
