@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Lista de Livros - Biblioteca IESGO</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    </head>
-    <body>
-        <h1> Lista de Livros </h1>
-        <ul>
+<head>
+    <title>Lista de Livros - Biblioteca IESGO</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Lista de Livros</h1>
+        <div class="row">
             {% for book in books %}
-            <li> 
-                {% if book.cover_image %}
-                    <img src="{{ book.cover_image.url}}" alt="{{book.title}}" style="width: 100px; height: auto;"> 
-                {% endif %}
-                {{ book.title}} escrito por {{ book.author }} em {{ book.published_date}}
-            
-            </li>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if book.cover_image %}
+                            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+                        {% else %}
+                            <img src="{% static 'images/default_cover.jpg' %}" class="card-img-top" alt="No Cover">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text">Autor: {{ book.author }}</p>
+                            <p class="card-text">Data de Publicação: {{ book.published_date }}</p>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        <ul>
-        </body>
-    </html>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
